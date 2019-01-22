@@ -12,7 +12,7 @@ var ctx = canvas.getContext("2d");
  * радиус шара
  * var int ballRadius
  */
-var ballRadius = 11;
+var ballRadius = 15;
 /*
  * координата x шара
  * var double x
@@ -42,7 +42,7 @@ var paddleHeight = 15;
  * ширина передвижной досточки
  * var int paddleWidth
  */
-var paddleWidth = 80;
+var paddleWidth = 75;
 /*
  * координата x передвижной досточки
  * var double paddleX
