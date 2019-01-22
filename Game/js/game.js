@@ -12,7 +12,7 @@ var ctx = canvas.getContext("2d");
  * радиус шара
  * var int ballRadius
  */
-var ballRadius = 10;
+var ballRadius = 1;
 /*
  * координата x шара
  * var double x
