@@ -1,111 +1,111 @@
 /*
- * хранит canvas
- * var HTMLElement canvas
+ * Хранит canvas
+ * Var HTMLElement canvas
  */
 var canvas = document.getElementById("myCanvas");
 /*
- * хранит контекст рисования на холсте
- * var any ctx
+ * Хранит контекст рисования на холсте
+ * Var any ctx
  */
 var ctx = canvas.getContext("2d");
 /*
- * радиус шара
- * var int ballRadius
+ * Радиус шара
+ * Var int ballRadius
  */
 var ballRadius = 11;
 /*
- * координата x шара
- * var double x
+ * Координата x шара
+ * Var double x
  */
 var x = canvas.width / 2;
 /*
- * координата y шара
- * var double y
+ * Координата y шара
+ * Var double y
  */
 var y = canvas.height - 30;
 /*
- * скорость передвижения шара по x
- * var int dx
+ * Скорость передвижения шара по x
+ * Var int dx
  */
 var dx = 2;
 /*
- * скорость передвижения шара по y
- * var int dy
+ * Скорость передвижения шара по y
+ * Var int dy
  */
 var dy = -2;
 /*
- * высота передвижной досточки
- * var int paddleHeight
+ * Высота передвижной досточки
+ * Var int paddleHeight
  */
 var paddleHeight = 15;
 /*
- * ширина передвижной досточки
- * var int paddleWidth
+ * Ширина передвижной досточки
+ * Var int paddleWidth
  */
 var paddleWidth = 70;
 /*
- * координата x передвижной досточки
- * var double paddleX
+ * Координата x передвижной досточки
+ * Var double paddleX
  */
 var paddleX = (canvas.width - paddleWidth) / 2;
 /*
- * сдвиг вправо
- * var bool rightPressed
+ * Cдвиг вправо
+ * Var bool rightPressed
  */
 var rightPressed = false;
 /*
- * сдвиг влево
- * var bool leftPressed
+ * Cдвиг влево
+ * Var bool leftPressed
  */
 var leftPressed = false;
 /*
- * кол-во строк досточек
- * var int brickRowCount
+ * Кол-во строк досточек
+ * Var int brickRowCount
  */
 var brickRowCount = 5;
 /*
- * кол-во колонок досточек
- * var int brickColumnCount
+ * Кол-во колонок досточек
+ * Var int brickColumnCount
  */
 var brickColumnCount = 3;
 /*
- * ширина досточки
- * var int brickWidth
+ * Ширина досточки
+ * Var int brickWidth
  */
 var brickWidth = 70;
 /*
- * высота досточки
- * var int brickHeight
+ * Высота досточки
+ * Var int brickHeight
  */
 var brickHeight = 20;
 /*
- * отступ между досточками
- * var int brickPadding
+ * Отступ между досточками
+ * Var int brickPadding
  */
 var brickPadding = 10;
 /*
- * отступ от верха
- * var int brickOffsetTop
+ * Отступ от верха
+ * Var int brickOffsetTop
  */
 var brickOffsetTop = 30;
 /*
- * отступ от левого края
- * var int brickOffsetLeft
+ * Отступ от левого края
+ * Var int brickOffsetLeft
  */
 var brickOffsetLeft = 30;
 /*
- * счет
- * var int score
+ * Cчет
+ * Var int score
  */
 var score = 0;
 /*
- * жизни
- * var int lives
+ * Жизни
+ * Var int lives
  */
 var lives = 3;
 
 /*
- * массив досточек
+ * Массив досточек
  */
 var bricks = [];
 for (var c = 0; c < brickColumnCount; c++) {
@@ -120,9 +120,9 @@ document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
 
 /*
- * работа со свойствами rightPressed и leftPressed
- * если код нажатой кнопки равен 39 rightPressed устанавливается true
- * если код нажатой кнопки равен 37 leftPressed устанавливается true
+ * Работа со свойствами rightPressed и leftPressed
+ * Если код нажатой кнопки равен 39 rightPressed устанавливается true
+ * Если код нажатой кнопки равен 37 leftPressed устанавливается true
  */
 function keyDownHandler(e) {
     if (e.keyCode == 39) {
@@ -133,9 +133,9 @@ function keyDownHandler(e) {
     }
 }
 /*
- * работа со свойствами rightPressed и leftPressed
- * если код отпущенной кнопки равен 39 rightPressed устанавливается false
- * если код отпущенной кнопки равен 37 leftPressed устанавливается false
+ * Работа со свойствами rightPressed и leftPressed
+ * Если код отпущенной кнопки равен 39 rightPressed устанавливается false
+ * Если код отпущенной кнопки равен 37 leftPressed устанавливается false
  */
 function keyUpHandler(e) {
     if (e.keyCode == 39) {
@@ -147,7 +147,7 @@ function keyUpHandler(e) {
 }
 /*
  * Работа со свойством paddleX
- * Если координата курсора по оси х больше 0 и меньше чем ширина холста
+ * если координата курсора по оси х больше 0 и меньше чем ширина холста
  * Передвижной доске установится этот x
  */
 function mouseMoveHandler(e) {
@@ -157,11 +157,11 @@ function mouseMoveHandler(e) {
     }
 }
 /*
- * Обнаружение столкновения
- * если дощечка еще не уничтожена и координаты шара попадают в ее диапазон
- * ей присваивается статус уничтожена, а счет увеличивается на 1
- * если счет равен кол-во дощечек, значит все дощечки уничтожены
- * и выводится сообщение о победе
+ * обнаружение столкновения
+ * Если дощечка еще не уничтожена и координаты шара попадают в ее диапазон
+ * Ей присваивается статус уничтожена, а счет увеличивается на 1
+ * Если счет равен кол-во дощечек, значит все дощечки уничтожены
+ * И выводится сообщение о победе
  */
 function collisionDetection() {
     for (var c = 0; c < brickColumnCount; c++) {
@@ -182,7 +182,7 @@ function collisionDetection() {
     }
 }
 /*
- * Отрисовка шара
+ * отрисовка шара
  */
 function drawBall() {
     ctx.beginPath();
@@ -192,7 +192,7 @@ function drawBall() {
     ctx.closePath();
 }
 /*
- * Отрисовка передвижной досточки
+ * отрисовка передвижной досточки
  */
 function drawPaddle() {
     ctx.beginPath();
@@ -202,7 +202,7 @@ function drawPaddle() {
     ctx.closePath();
 }
 /*
- * Отрисовка досточек
+ * отрисовка досточек
  */
 function drawBricks() {
     for (var c = 0; c < brickColumnCount; c++) {
@@ -222,7 +222,7 @@ function drawBricks() {
     }
 }
 /*
- * Отрисовка результата
+ * отрисовка результата
  */
 function drawScore() {
     ctx.font = "16px Arial";
@@ -230,7 +230,7 @@ function drawScore() {
     ctx.fillText("Score: " + score, 8, 20);
 }
 /*
- * Отрисовка жизней
+ * отрисовка жизней
  */
 function drawLives() {
     ctx.font = "16px Arial";
@@ -239,16 +239,16 @@ function drawLives() {
 }
 
 /*
- * Отрисовка холста
- * если x шара выходит за рамки холста, то мы инвертируем его скорость по x
- * если y шара выходит за рамки холста вверх, то мы инвертируем его скорость по y
- * если y шара выходит за рамки холста вниз и попадает на передвижную дощечку,
- * то мы инвертируем его скорость по y,
- * если нет то уменьшаем кол-во жизней,
- * если ко-во жизней будет равно 0, игра будет закончена и будет показано сообщение о поражении
- * если свойство rightPressed включено и есть куда сдвинуться мы передвигаем дощечку вправо
- * если свойство leftPressed включено и есть куда сдвинуться мы передвигаем дощечку влево
- * прибавляем скорость шара к его координатм
+ * отрисовка холста
+ * Если x шара выходит за рамки холста, то мы инвертируем его скорость по x
+ * Если y шара выходит за рамки холста вверх, то мы инвертируем его скорость по y
+ * Если y шара выходит за рамки холста вниз и попадает на передвижную дощечку,
+ * То мы инвертируем его скорость по y,
+ * Если нет то уменьшаем кол-во жизней,
+ * Если ко-во жизней будет равно 0, игра будет закончена и будет показано сообщение о поражении
+ * Если свойство rightPressed включено и есть куда сдвинуться мы передвигаем дощечку вправо
+ * Если свойство leftPressed включено и есть куда сдвинуться мы передвигаем дощечку влево
+ * Прибавляем скорость шара к его координатм
  */
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
