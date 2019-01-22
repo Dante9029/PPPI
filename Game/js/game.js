@@ -37,7 +37,7 @@ var dy = -2;
  * высота передвижной досточки
  * var int paddleHeight
  */
-var paddleHeight = 20;
+var paddleHeight = 15;
 /*
  * ширина передвижной досточки
  * var int paddleWidth
