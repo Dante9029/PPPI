@@ -72,7 +72,7 @@ var brickColumnCount = 3;
  * ширина досточки
  * var int brickWidth
  */
-var brickWidth = 75;
+var brickWidth = 70;
 /*
  * высота досточки
  * var int brickHeight
