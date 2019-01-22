@@ -42,7 +42,7 @@ var paddleHeight = 15;
  * ширина передвижной досточки
  * var int paddleWidth
  */
-var paddleWidth = 80;
+var paddleWidth = 75;
 /*
  * координата x передвижной досточки
  * var double paddleX
