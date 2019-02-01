@@ -87,7 +87,7 @@ var brickPadding = 10;
  * Отступ от верха
  * Var int brickOffsetTop
  */
-var brickOffsetTop = 30;
+var brickOffsetTop = 33;
 /*
  * Отступ от левого края
  * Var int brickOffsetLeft
@@ -173,7 +173,7 @@ function collisionDetection() {
                     b.status = 0;
                     score++;
                     if (score == brickRowCount * brickColumnCount) {
-                        alert("YOU WIN, CONGRATS!");
+                        alert("YOU WIN, CONGRATULATION!!!");
                         document.location.reload();
                     }
                 }
@@ -225,7 +225,7 @@ function drawBricks() {
  * отрисовка результата
  */
 function drawScore() {
-    ctx.font = "16px Arial";
+    ctx.font = "16px Calibri";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Score: " + score, 8, 20);
 }
@@ -233,7 +233,7 @@ function drawScore() {
  * отрисовка жизней
  */
 function drawLives() {
-    ctx.font = "16px Arial";
+    ctx.font = "16px Calibri";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
 }
