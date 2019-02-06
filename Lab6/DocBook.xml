@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="styles.css"?>
+<book version="5.0" xml:id="simple_book" xmlns="http://docbook.org/ns/docbook">
+    <info>
+        <title>Документация к проекту "Arkanoid"</title>
+        <author>
+            <personname>
+                <firstname>Амир</firstname>
+                <surname>Лутфуллаев</surname>
+            </personname>
+        </author>
+        <copyright>
+            <year>2018</year>
+            <holder>Амир  Лутфуллаев</holder>
+        </copyright>
+    </info>
+    <preface>
+        <title>Преамбула</title>
+        <address>Benjamin.iixxxdantexxxii@gmail.com</address>
+    </preface>
+    <chapter xml:id="chapter_1">
+        <title>Игры, как часть современного мира</title>
+        <para>Среди людей старшего поколения, и особенно среди женщин, существует расхожее мнение, что компьютерные игры вредны - либо для психики, либо для зрения, или для умственного развития.     </para>
+        <para>Компьютерные игры растят гениев. Почти все мамы и бабушки, растящие детей и подростков, уверены, что игры – пустое времяпровождение, от которого люди глупеют и становятся агрессивнее.</para>
+        <para>Между тем практически все современные исследования доказывают, что это далеко не так.</para>
+        <para>Даже наоборот - компьютерные игры полезны. Они развивают логическое мышление, наблюдательность, повышают скорость принятия решения, в том числе в критических ситуациях.</para>
+        <para>Развивают умение обрабатывать в голове массивы информации.</para>
+        <para>Данная игра не является исключением и приносит только опыт, однако также потерю времени.</para>
+    </chapter>
+    <chapter xml:id="chapter_2">
+        <title>Взаимодействие</title>
+        <para>Передвижение платформы вправо и влево на клавиатуре и мышкой</para>
+    </chapter>
+    <chapter xml:id="chapter_3">
+        <title>Сценарии игры</title>
+        <para>Суть игры уничтожить все блоки</para>
+        <para>Поражение настает в случае если шар трижды упадет мимо платформы игрока</para>
+        <programlisting><![CDATA[ 
+       function collisionDetection() {
+    for (var c = 0; c < brickColumnCount; c++) {
+        for (var r = 0; r < brickRowCount; r++) {
+            var b = bricks[c][r];
+            if (b.status == 1) {
+                if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                    dy = -dy;
+                    b.status = 0;
+                    score++;
+                    if (score == brickRowCount * brickColumnCount) {
+                        alert("YOU WIN, CONGRATS!");
+                        document.location.reload();
+                    }
+                }
+            }
+        }
+    }
+}
+        }]]></programlisting>
+        <title>Примеры работы программы</title>
+        <figure>
+            <title>Варианто старта</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="2.png" format="PNG"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+    </chapter>
+</book>
