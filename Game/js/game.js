@@ -12,7 +12,11 @@ var ctx = canvas.getContext("2d");
  * Радиус шара
  * Var int ballRadius
  */
+<<<<<<< HEAD
 var ballRadius = 11;
+=======
+var ballRadius = 16;
+>>>>>>> Konflict
 /**
  * Координата x шара
  * Var double x
